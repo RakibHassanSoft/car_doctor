@@ -18,7 +18,7 @@ const Signup = () => {
         .then(result=>{
             const user = result.user;
             console.log(user)
-            logOut()
+            // logOut()
         })
         .catch(err=>{
             console.log(err)

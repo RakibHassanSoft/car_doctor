@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 const SeviceCard = ({ data }) => {
     // console.log(data)
     return (
@@ -9,9 +9,10 @@ const SeviceCard = ({ data }) => {
                 <div className=' '>
                     <h2 className="">Name</h2>
                     <p className=''> Price : </p>
+    
                 </div>
                 <div className="">
-                    <button className="btn btn-primary">Buy Now</button>
+                  <Link className='btn btn-primary' to={`/checkout/${data._id}`}>Book now</Link>
                 </div>
             </div>
         </div>
