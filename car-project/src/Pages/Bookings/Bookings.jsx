@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import BookingRow from "./BookingRow";
+import axios from "axios";
 
 const Bookings = () => {
 
@@ -69,15 +70,24 @@ const Bookings = () => {
         if (userEmail) {
 
             const url = `http://localhost:5000/bookings?email=${userEmail}`;
-            fetch(url)
-                .then(res => res.json())
-                .then(data => {
-                    setBookings(data);
-                    console.log(data)
-                })
-                .catch(error => {
-                    console.error("Error fetching data:", error);
-                });
+            
+            axios.get(url,{withCredentials: true})
+            .then(res =>{
+                setBookings(res.data);
+                console.log(res)
+            })
+            
+            
+            
+            // fetch(url)
+            //     .then(res => res.json())
+            //     .then(data => {
+            //         setBookings(data);
+            //         console.log(data)
+            //     })
+            //     .catch(error => {
+            //         console.error("Error fetching data:", error);
+            //     });
         }
     }, [userEmail]); // Trigger effect when userEmail changes
 
